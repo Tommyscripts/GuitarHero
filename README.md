@@ -31,6 +31,8 @@ variable timeup = Creamos un setInterval reutilizable.
 
 Creamos una constante llamada moveNote la cual utilizamos para una funcion, su objetivo es mover la nota a travéz de la string.
 
+Una variable llamada dirección = le damos la dirección al objeto.
+
 Funcion activated Arrow = para detectar si ha pulsado bien la nota el usuario, o ha errado.
 
 Addevenlistener (keydown) con un switch, donde detectanos el evento de la pulsación de las flechas.
