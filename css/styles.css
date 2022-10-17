@@ -5,31 +5,31 @@ body{
 .main {
     display: flex;
     height: 775px;
-    width: 95em;
+    width: 1540px;
     border: 2px solid black;
 }
 .puntuaje {
-    width: 25%;
-    height: 100%;
+    width: 385px;
+    height: 775px;
     border: 2px solid red;
 }
 .juego{
     display: flex;
-    width: 75%;
-    height: 100%;
+    width: 1155px;
+    height: 775px;
     border: 2px solid blue;
 }
 .game{
     display: flex;
     align-items: flex-end;
-    width: 70%;
-    height: 100%;
+    width: 900px;
+    height: 775px;
     border: 2px solid yellow;
 }
 .botn{
     margin: 0% 5% 9% 5%;
-    width: 15%;
-    height: 15%;
+    width: 135px;
+    height: 130px;
     border: 2px solid black;
 }
 .gif{
