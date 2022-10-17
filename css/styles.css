@@ -1,0 +1,38 @@
+body{
+    min-height: 100%;
+    min-width: 99%;
+}
+.main {
+    display: flex;
+    height: 47em;
+    width: 95em;
+    border: 2px solid black;
+}
+.puntuaje {
+    width: 25%;
+    height: 100%;
+    border: 2px solid red;
+}
+.juego{
+    display: flex;
+    width: 75%;
+    height: 100%;
+    border: 2px solid blue;
+}
+.game{
+    display: flex;
+    align-items: flex-end;
+    width: 70%;
+    height: 100%;
+    border: 2px solid yellow;
+}
+.botn{
+    margin: 0% 5% 9% 5%;
+    width: 15%;
+    height: 15%;
+    border: 2px solid black;
+}
+.gif{
+    width: 15%;
+    height: 100%;
+}
