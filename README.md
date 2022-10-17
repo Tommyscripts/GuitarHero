@@ -23,11 +23,12 @@ Arrows = variable dada a las flechas.
 
 Notas = las notas generadas por el juego.
 
-funcion activated Arrow = para detectar si ha pulsado bien la nota el usuario, o ha errado.
+Guitarra = la variable utilizada para crear el camino que recorrera las notas.
+
+Funcion activated Arrow = para detectar si ha pulsado bien la nota el usuario, o ha errado.
 
 Addevenlistener (keydown) con un switch, donde detectanos el evento de la pulsación de las flechas.
 
-Guitarra = la variable utilizada para crear el camino que recorrera las notas.
 
 
 ```
