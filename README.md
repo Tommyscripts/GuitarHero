@@ -18,12 +18,18 @@ Para la realización del proyecto, primero creamos una idea grupal de como haria
 
 Tras tener la visualización, hemos creado un sistema básico, para poder testear los codigos creados en JavaScript, la versión de prueba de dicho juego.
 
+Al div padre le hemos dado 775px en si height
+
 Dar nombre a las variables y funciones, las cuales son las siguientes:
 Arrows = variable dada a las flechas.
 
 Notas = las notas generadas por el juego.
 
 Guitarra = la variable utilizada para crear el camino que recorrera las notas.
+
+variable timeup = Creamos un setInterval reutilizable.
+
+Creamos una constante llamada moveNote la cual utilizamos para una funcion, su objetivo es mover la nota a travéz de la string.
 
 Funcion activated Arrow = para detectar si ha pulsado bien la nota el usuario, o ha errado.
 
