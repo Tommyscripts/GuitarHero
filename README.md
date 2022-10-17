@@ -18,16 +18,60 @@ Para la realización del proyecto, primero creamos una idea grupal de como haria
 
 Tras tener la visualización, hemos creado un sistema básico, para poder testear los codigos creados en JavaScript, la versión de prueba de dicho juego.
 
-_Dí cómo será ese paso_
+Dar nombre a las variables y funciones, las cuales son las siguientes:
+Arrows = a las flechas
+Notas = las generadas por el juego.
+funcion activated Arrow = para detectar si ha pulsado bien la nota el usuario, o ha errado.
+Addevenlistener (keydown) con un switch, donde detectanos el evento de la pulsación de las flechas.
 
 ```
-Da un ejemplo
+window.addEventListener("keydown", function (e) {
+    switch (e.code) {
+        case 'ArrowLeft':
+            arrows.pressed = 'left'
+            activatedArrow()
+            break;
+        case 'ArrowUp':
+            arrows.pressed = 'up'
+            activatedArrow()
+            break;
+        case 'ArrowDown':
+            arrows.pressed = 'down'
+            activatedArrow()
+            break;
+        case 'ArrowRight':
+            arrows.pressed = 'right'
+            activatedArrow()
+            break;
+    }
+})
 ```
-
-_Y repite_
+El activated arrow
 
 ```
-hasta finalizar
+function activatedArrow() {
+    if (arrows.pressed === 'left') {
+        arrows.sprites[0].style.backgroundColor = "red"
+        setTimeout(function() {
+            arrows.sprites[0].style.backgroundColor = "transparent"
+        },200)
+    }else if(arrows.pressed === 'up'){
+        arrows.sprites[1].style.backgroundColor = "green"
+        setTimeout(function() {
+            arrows.sprites[1].style.backgroundColor = "transparent"
+        },200)
+    }else if(arrows.pressed === 'down'){
+        arrows.sprites[2].style.backgroundColor = "blue"
+        setTimeout(function() {
+            arrows.sprites[2].style.backgroundColor = "transparent"
+        },200)
+    }else if(arrows.pressed === 'right'){
+        arrows.sprites[3].style.backgroundColor = "yellow"
+        setTimeout(function() {
+            arrows.sprites[3].style.backgroundColor = "transparent"
+        },200)
+    }
+}
 ```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
