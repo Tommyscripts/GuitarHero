@@ -74,7 +74,7 @@ function activatedArrow() {
 }
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+La generación de la primera nota.
 
 ## Ejecutando las pruebas ⚙️
 
