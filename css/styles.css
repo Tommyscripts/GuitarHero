@@ -4,7 +4,7 @@ body{
 }
 .main {
     display: flex;
-    height: 47em;
+    height: 775px;
     width: 95em;
     border: 2px solid black;
 }
@@ -35,4 +35,12 @@ body{
 .gif{
     width: 15%;
     height: 100%;
+}
+.notaCSS{
+    position: absolute;
+    top: 10px;
+    left: 630px;
+    height: 70px;
+    width: 70px;
+    background-color: green;
 }
