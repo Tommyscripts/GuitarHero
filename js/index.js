@@ -1,36 +1,4 @@
-
-/*var captacion = {
-    key: '',
-    updateFlecha: function () {
-        for (let i = 0; i < teclas.length; i++) {
-            if (teclas[i].id === this.flecha) {
-                dimension.left = teclas[i].offsetLeft
-                dimension.top = teclas[i].offsetTop
-                dimension.height = teclas[i].offsetHeight
-                dimension.width = teclas[i].offsetWidth
-                console.log(dimension)
-            }
-        }
-    }
-}
-
-var dimension = {
-    top: 0,
-    left: 0,
-    height: 0,
-    width: 0, 
-}*/
-
-/*var game = {
-    flechas: function () {
-        
-    }
-}
-
-game.flechas()
-*/
-
-window.addEventListener("keydown", function (e) {
+window.addEventListener("keyup", function (e) {
     switch (e.code) {
         case 'ArrowLeft':
             arrows.pressed = 'left'
@@ -58,10 +26,7 @@ const arrows = {
 
 function activatedArrow() {
     if (arrows.pressed === 'left') {
-        arrows.sprites[0].style.backgroundColor = "red"
-        setTimeout(function() {
-            arrows.sprites[0].style.backgroundColor = "transparent"
-        },200)
+        
     }else if(arrows.pressed === 'up'){
         arrows.sprites[1].style.backgroundColor = "green"
         setTimeout(function() {
@@ -79,3 +44,34 @@ function activatedArrow() {
         },200)
     }
 }
+var pos = ['630px','825px','1030px','1223px']
+
+var guitarra = document.getElementById('guitarra')
+
+var nota = document.createElement('div')
+nota.setAttribute('class','notaCSS')
+guitarra.appendChild(nota)
+console.log(nota)
+var notaTop = 10
+var direccion = 1
+
+const moveNote = function() {
+    if (notaTop == 728) {
+        guitarra.removeChild(nota)
+    }
+    notaTop += 1 * direccion
+    nota.style.top = notaTop+'px'
+}
+
+var timeUp = setInterval(moveNote,10)
+
+// var notaCSS = {
+//     top: 10px;
+//     left: 630px;
+//     left2: 825px;
+//     left3: 1030px;
+//     left4: 1223px;
+//     height: '200px',
+//     width: '200px',
+//     backgroundColor: 'green',
+// }
