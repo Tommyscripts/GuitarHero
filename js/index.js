@@ -56,29 +56,40 @@ function moveNote() {
   }.bind(this))
 }
 
+var life = document.getElementById('life')
+var live = parseInt(life.innerText)
+
 function removeNote() {
   arrayLeft.forEach(function (note) {
     if (note.top === 728) {
       guitarra.removeChild(note.html)
       arrayLeft.shift()
+      live--
+      life.innerText = live
     }
   }.bind(this))
   arrayUp.forEach(function (note) {
     if (note.top === 728) {
       guitarra.removeChild(note.html)
       arrayUp.shift()
+      live--
+      life.innerText = live
     }
   }.bind(this))
   arrayDown.forEach(function (note) {
     if (note.top === 728) {
       guitarra.removeChild(note.html)
       arrayDown.shift()
+      live--
+      life.innerText = live
     }
   }.bind(this))
   arrayRight.forEach(function (note) {
     if (note.top === 728) {
       guitarra.removeChild(note.html)
       arrayRight.shift()
+      live--
+      life.innerText = live
     }
   }.bind(this))
 }
@@ -89,14 +100,23 @@ var point = 0
 function checkNote(pressed) {
   switch (pressed) {
     case 'ArrowLeft':
-      arrayLeft.forEach(function (note) {
-        if (note.top > 582 && note.top + note.height < 712) {
-          guitarra.removeChild(note.html)
-          arrayLeft.shift()
-          point += 10
-          score.innerText = point
-        }        
-      }.bind(this))
+      if (arrayLeft.length != 0) {
+        arrayLeft.forEach(function (note) {
+          if (note.top > 582 && note.top + note.height < 712) {
+            guitarra.removeChild(note.html)
+            arrayLeft.shift()
+            point += 10
+            score.innerText = point
+          } else if (arrayLeft[0] && note.top < 582) {
+            live--
+            life.innerText = live
+          }
+        }.bind(this))
+      } else {
+        live--
+        life.innerText = live
+      }
+
       break;
     case 'ArrowUp':
       arrayUp.forEach(function (note) {
@@ -105,6 +125,9 @@ function checkNote(pressed) {
           arrayUp.shift()
           point += 10
           score.innerText = point
+        } else if (arrayUp[0] && note.top < 582 || arrayUp.length === 0) {
+          live--
+          life.innerText = live
         }
       }.bind(this))
       break;
@@ -115,6 +138,9 @@ function checkNote(pressed) {
           arrayDown.shift()
           point += 10
           score.innerText = point
+        } else if (arrayDown[0] && note.top < 582 || arrayDown.length === 0) {
+          live--
+          life.innerText = live
         }
       }.bind(this))
       break;
@@ -125,6 +151,9 @@ function checkNote(pressed) {
           arrayRight.shift()
           point += 10
           score.innerText = point
+        } else if (arrayRight[0] && note.top < 582 || arrayRight.length === 0) {
+          live--
+          life.innerText = live
         }
       }.bind(this))
       break;
@@ -138,8 +167,6 @@ function startGame() {
     removeNote()
   }, 10)
 }
-
-
 
 const arrows = {
   sprites: document.getElementsByClassName("botn"),
@@ -176,4 +203,4 @@ window.addEventListener("keydown", function (e) {
     arrows.activatedArrow(e.code);
   }
 })
-startGame()
+//startGame()
