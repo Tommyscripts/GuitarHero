@@ -44,3 +44,12 @@ body{
     width: 70px;
     background-color: green;
 }
+
+.pruebacss{
+    position: absolute;
+    top: 582px;
+    left: 610px;
+    height: 70px;
+    width: 70px;
+    background-color: grey;
+}

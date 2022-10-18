@@ -1,69 +1,63 @@
-window.addEventListener("keyup", function (e) {
-    switch (e.code) {
-        case 'ArrowLeft':
-            arrows.pressed = 'left'
-            activatedArrow()
-            break;
-        case 'ArrowUp':
-            arrows.pressed = 'up'
-            activatedArrow()
-            break;
-        case 'ArrowDown':
-            arrows.pressed = 'down'
-            activatedArrow()
-            break;
-        case 'ArrowRight':
-            arrows.pressed = 'right'
-            activatedArrow()
-            break;
+// TODO
+// var pos = ['630px', '825px', '1030px', '1223px']
+
+var Nota = {
+  html: document.createElement('div'),
+  top: 10,
+  height: 70, 
+  incremento: 1,
+  timerId: null,
+  move() {
+    if (this.top == 728) {
+      guitarra.removeChild(this.html)
     }
-})
+    this.top += this.incremento
+    this.html.style.top = this.top + 'px'
+  },
+  start() {
+    this.timerId = setInterval(this.move.bind(this), 10)
+  }
+}
+Nota.html.setAttribute('class', 'notaCSS');
+var guitarra = document.getElementById('guitarra')
+guitarra.appendChild(Nota.html)
+
+Nota.start()
 
 const arrows = {
-    sprites: document.getElementsByClassName("botn"),
-    pressed: null,
-}
-
-function activatedArrow() {
-    if (arrows.pressed === 'left') {
-        
-    }else if(arrows.pressed === 'up'){
-        arrows.sprites[1].style.backgroundColor = "green"
-        setTimeout(function() {
-            arrows.sprites[1].style.backgroundColor = "transparent"
-        },200)
-    }else if(arrows.pressed === 'down'){
-        arrows.sprites[2].style.backgroundColor = "blue"
-        setTimeout(function() {
-            arrows.sprites[2].style.backgroundColor = "transparent"
-        },200)
-    }else if(arrows.pressed === 'right'){
-        arrows.sprites[3].style.backgroundColor = "yellow"
-        setTimeout(function() {
-            arrows.sprites[3].style.backgroundColor = "transparent"
-        },200)
+  sprites: document.getElementsByClassName("botn"),
+  colorAndTransparent(id, color) {
+    this.sprites[id].style.backgroundColor = color
+    setTimeout(() => {
+      this.sprites[id].style.backgroundColor = "transparent"
+    }, 200)
+  },
+  activatedArrow(pressed) {
+    switch (pressed) {
+      case 'ArrowLeft':
+        this.colorAndTransparent(0, 'red');
+        break;
+      case 'ArrowUp':
+        this.colorAndTransparent(1, 'green');
+        break;
+      case 'ArrowDown':
+        this.colorAndTransparent(2, 'blue');
+        break;
+      case 'ArrowRight':
+        this.colorAndTransparent(3, 'yellow');
+        break;
     }
-}
-var pos = ['630px','825px','1030px','1223px']
-
-var guitarra = document.getElementById('guitarra')
-
-var nota = document.createElement('div')
-nota.setAttribute('class','notaCSS')
-guitarra.appendChild(nota)
-console.log(nota)
-var notaTop = 10
-var direccion = 1
-
-const moveNote = function() {
-    if (notaTop == 728) {
-        guitarra.removeChild(nota)
+    if (Nota.top > 582 && Nota.top+Nota.height < 712) {
+      console.log('DENTRO PERO CUALQUIER TECLA')
     }
-    notaTop += 1 * direccion
-    nota.style.top = notaTop+'px'
+  }
 }
 
-var timeUp = setInterval(moveNote,10)
+window.addEventListener("keydown", function (e) {
+  if (['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'].includes(e.code)) {
+    arrows.activatedArrow(e.code);
+  }
+})
 
 // var notaCSS = {
 //     top: 10px;
