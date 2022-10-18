@@ -1,42 +1,51 @@
-body{
+body {
     min-height: 100%;
     min-width: 99%;
 }
+
 .main {
     display: flex;
     height: 775px;
     width: 1540px;
     border: 2px solid black;
 }
+
 .puntuaje {
+    display: flex;
+    flex-direction: column;
     width: 385px;
     height: 775px;
     border: 2px solid red;
 }
-.juego{
+
+.juego {
     display: flex;
     width: 1155px;
     height: 775px;
     border: 2px solid blue;
 }
-.game{
+
+.game {
     display: flex;
     align-items: flex-end;
     width: 900px;
     height: 775px;
     border: 2px solid yellow;
 }
-.botn{
+
+.botn {
     margin: 0% 5% 9% 5%;
     width: 135px;
     height: 130px;
     border: 2px solid black;
 }
-.gif{
+
+.gif {
     width: 15%;
     height: 100%;
 }
-.notaCSS{
+
+.notaCSS {
     position: absolute;
     top: 10px;
     height: 70px;
@@ -44,11 +53,35 @@ body{
     background-color: green;
 }
 
-.pruebacss{
+.pruebacss {
     position: absolute;
     top: 582px;
     left: 610px;
     height: 70px;
     width: 70px;
     background-color: grey;
+}
+
+#score {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10% 5% 10% 20%;
+    font-size: 40px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+#life {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0% 5% 10% 20%;
+    font-size: 40px;
+    font-weight: bold;
+    border: 1px solid black;
 }

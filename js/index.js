@@ -83,6 +83,9 @@ function removeNote() {
   }.bind(this))
 }
 
+var score = document.getElementById('score')
+var point = 0
+
 function checkNote(pressed) {
   switch (pressed) {
     case 'ArrowLeft':
@@ -90,7 +93,9 @@ function checkNote(pressed) {
         if (note.top > 582 && note.top + note.height < 712) {
           guitarra.removeChild(note.html)
           arrayLeft.shift()
-        }
+          point += 10
+          score.innerText = point
+        }        
       }.bind(this))
       break;
     case 'ArrowUp':
@@ -98,6 +103,8 @@ function checkNote(pressed) {
         if (note.top > 582 && note.top + note.height < 712) {
           guitarra.removeChild(note.html)
           arrayUp.shift()
+          point += 10
+          score.innerText = point
         }
       }.bind(this))
       break;
@@ -106,6 +113,8 @@ function checkNote(pressed) {
         if (note.top > 582 && note.top + note.height < 712) {
           guitarra.removeChild(note.html)
           arrayDown.shift()
+          point += 10
+          score.innerText = point
         }
       }.bind(this))
       break;
@@ -114,6 +123,8 @@ function checkNote(pressed) {
         if (note.top > 582 && note.top + note.height < 712) {
           guitarra.removeChild(note.html)
           arrayRight.shift()
+          point += 10
+          score.innerText = point
         }
       }.bind(this))
       break;
@@ -146,12 +157,15 @@ const arrows = {
         break;
       case 'ArrowUp':
         this.colorAndTransparent(1, 'green');
+        checkNote(pressed)
         break;
       case 'ArrowDown':
         this.colorAndTransparent(2, 'blue');
+        checkNote(pressed)
         break;
       case 'ArrowRight':
         this.colorAndTransparent(3, 'yellow');
+        checkNote(pressed)
         break;
     }
   }
