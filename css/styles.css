@@ -28,9 +28,9 @@ body {
 .menu{
     position: relative;
     display: flex;
-    background-image: url("../img/fondomenu.png");
+    background-image: url("../img/marcoFloral2.jpg");
     background-repeat: no-repeat;
-    background-size: 100% 1100px;
+    background-size: 100% 100%;
 }
 
 .border {
@@ -102,36 +102,44 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10% 5% 10% 20%;
+    margin: 40% 20% 0% 20%;
     font-size: 40px;
     font-weight: bold;
-    border: 1px solid black;
+    background-image: url("../img/marco2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
 }
 
 #life {
     width: 200px;
-    height: 50px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0% 5% 10% 20%;
-    font-size: 40px;
+    margin: 30% 20% 0% 20%;
+    font-size: 150px;
     font-weight: bold;
-    border: 1px solid black;
+    background-image: url("../img/marco2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     border-radius: 100%;
 }
 
-#combo {
+#combox {
     width: 200px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0% 5% 10% 20%;
+    margin: 10% 20% 0% 20%;
     font-size: 40px;
     font-weight: bold;
-    border: 1px solid black;
+    background-image: url("../img/marco2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
+
 #level {
     width: 200px;
     height: 50px;
