@@ -22,16 +22,17 @@ var life = document.getElementById('life')
 var live = parseInt(life.innerText)
 var score = document.getElementById('score')
 var point = 0
-var start = document.getElementById('startgame')
+var start = document.getElementById('start')
 var comboBox = document.getElementById('combo')
 var comboCounter = 0
 
 start.addEventListener('click', function (e) {
+  start.parentNode.parentNode.style.display= "none"
   startGame(40000)
 })
 
 function generator() {
-  var position = ['629px', '835px', '1043px', '1248px']
+  var position = ['75px', '280px', '485px', '690px']
   var ranPosition = Math.floor(Math.random() * 4)
   var newNota = new Nota(position[ranPosition])
   newNota.html.setAttribute('class', 'notaCSS');
@@ -174,6 +175,8 @@ function clearGame() {
   life.innerText = 5
   score.innerText = 0
   live = parseInt(life.innerHTML)
+  comboCounter = 0
+  comboBox.innerText = comboCounter
 
   clearInterval(timerGame)
   clearInterval(timerGenerator)
@@ -191,7 +194,7 @@ const arrows = {
   activatedArrow(pressed) {
     switch (pressed) {
       case 'ArrowLeft':
-        this.colorAndTransparent(0, 'red');
+        this.colorAndTransparent(0, '#900707');
         checkNote(pressed)
         break;
       case 'ArrowUp':
@@ -203,7 +206,7 @@ const arrows = {
         checkNote(pressed)
         break;
       case 'ArrowRight':
-        this.colorAndTransparent(3, 'yellow');
+        this.colorAndTransparent(3, '#AFAF05');
         checkNote(pressed)
         break;
     }
