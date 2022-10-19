@@ -10,6 +10,7 @@ function Nota(left) {
     this.html.style.top = this.top + 'px'
   }
 }
+
 var arrayLeft = []
 var arrayUp = []
 var arrayDown = []
@@ -25,7 +26,7 @@ var start = document.getElementById('startgame')
 var comboBox = document.getElementById('combo')
 var comboCounter = 0
 
-start.addEventListener('click', function(e) {
+start.addEventListener('click', function (e) {
   startGame(40000)
 })
 
@@ -68,43 +69,23 @@ function moveNote() {
   }.bind(this))
 }
 
-function removeNote() {
-  arrayLeft.forEach(function (note) {
-    if (note.top === 728) {
-      guitarra.removeChild(note.html)
-      arrayLeft.shift()
-      live--
-      life.innerText = live
-      gameOver()
-    }
-  }.bind(this))
-  arrayUp.forEach(function (note) {
-    if (note.top === 728) {
-      guitarra.removeChild(note.html)
-      arrayUp.shift()
-      live--
-      life.innerText = live
-      gameOver()
-    }
-  }.bind(this))
-  arrayDown.forEach(function (note) {
-    if (note.top === 728) {
-      guitarra.removeChild(note.html)
-      arrayDown.shift()
-      live--
-      life.innerText = live
-      gameOver()
-    }
-  }.bind(this))
-  arrayRight.forEach(function (note) {
-    if (note.top === 728) {
-      guitarra.removeChild(note.html)
-      arrayRight.shift()
-      live--
-      life.innerText = live
-      gameOver()
-    }
-  }.bind(this))
+function removeNote(arr) {
+  if (arr.length > 0 && arr[0].top === 728) {
+    guitarra.removeChild(arr[0].html)
+    arr.shift()
+    live--
+    life.innerText = live
+    gameOver()
+  }
+}
+
+function checkRemoveNote() {
+  
+  removeNote(arrayLeft)
+  removeNote(arrayUp)
+  removeNote(arrayDown)
+  removeNote(arrayRight)
+  
 }
 
 function gameOver() {
@@ -162,15 +143,16 @@ function startGame(songTimer) {
   timerGenerator = setInterval(generator, 2000)
   timerGame = setInterval(function () {
     moveNote()
-    removeNote()
+    checkRemoveNote()
   }, 10)
   timerWinner = setTimeout(function () {
-  alert("you win")
+    alert("you win")
     clearGame()
-  },songTimer)
+  }, songTimer)
 }
 
 function clearGame() {
+  
   arrayLeft.forEach(function (note) {
     guitarra.removeChild(note.html)
   }.bind(this))
@@ -183,13 +165,16 @@ function clearGame() {
   arrayRight.forEach(function (note) {
     guitarra.removeChild(note.html)
   }.bind(this))
+  
   arrayLeft = []
   arrayUp = []
   arrayDown = []
   arrayRight = []
+
   life.innerText = 5
   score.innerText = 0
   live = parseInt(life.innerHTML)
+
   clearInterval(timerGame)
   clearInterval(timerGenerator)
   clearTimeout(timerWinner)
