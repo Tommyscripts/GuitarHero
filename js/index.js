@@ -14,6 +14,20 @@ var arrayLeft = []
 var arrayUp = []
 var arrayDown = []
 var arrayRight = []
+var timerGame = null
+var timerGenerator = null
+var timerWinner = null
+var life = document.getElementById('life')
+var live = parseInt(life.innerText)
+var score = document.getElementById('score')
+var point = 0
+var start = document.getElementById('startgame')
+var comboBox = document.getElementById('combo')
+var comboCounter = 0
+
+start.addEventListener('click', function(e) {
+  startGame(40000)
+})
 
 function generator() {
   var position = ['629px', '835px', '1043px', '1248px']
@@ -38,8 +52,6 @@ function generator() {
   }
 
 }
-var timerGame = null
-var timerGenerator = null
 
 function moveNote() {
   arrayLeft.forEach(function (note) {
@@ -56,9 +68,6 @@ function moveNote() {
   }.bind(this))
 }
 
-var life = document.getElementById('life')
-var live = parseInt(life.innerText)
-
 function removeNote() {
   arrayLeft.forEach(function (note) {
     if (note.top === 728) {
@@ -66,6 +75,7 @@ function removeNote() {
       arrayLeft.shift()
       live--
       life.innerText = live
+      gameOver()
     }
   }.bind(this))
   arrayUp.forEach(function (note) {
@@ -74,6 +84,7 @@ function removeNote() {
       arrayUp.shift()
       live--
       life.innerText = live
+      gameOver()
     }
   }.bind(this))
   arrayDown.forEach(function (note) {
@@ -82,6 +93,7 @@ function removeNote() {
       arrayDown.shift()
       live--
       life.innerText = live
+      gameOver()
     }
   }.bind(this))
   arrayRight.forEach(function (note) {
@@ -90,82 +102,97 @@ function removeNote() {
       arrayRight.shift()
       live--
       life.innerText = live
+      gameOver()
     }
   }.bind(this))
 }
 
-var score = document.getElementById('score')
-var point = 0
+function gameOver() {
+  if (live === -1) {
+    alert("Game Over")
+    clearGame()
+  }
+}
+
+function inputAction(arr) {
+  if (arr.length != 0) {
+    arr.forEach(function (note) {
+      if (note.top > 582 && note.top + note.height < 712) {
+        guitarra.removeChild(note.html)
+        arr.shift()
+        point += 10
+        score.innerText = point
+        comboCounter++
+        comboBox.innerText = comboCounter
+      } else if (arr[0] && note.top < 582) {
+        live--
+        life.innerText = live
+        comboCounter = 0
+        comboBox.innerText = comboCounter
+        gameOver()
+      }
+    }.bind(this))
+  } else {
+    live--
+    life.innerText = live
+    comboCounter = 0
+    comboBox.innerText = comboCounter
+    gameOver()
+  }
+}
 
 function checkNote(pressed) {
   switch (pressed) {
     case 'ArrowLeft':
-      if (arrayLeft.length != 0) {
-        arrayLeft.forEach(function (note) {
-          if (note.top > 582 && note.top + note.height < 712) {
-            guitarra.removeChild(note.html)
-            arrayLeft.shift()
-            point += 10
-            score.innerText = point
-          } else if (arrayLeft[0] && note.top < 582) {
-            live--
-            life.innerText = live
-          }
-        }.bind(this))
-      } else {
-        live--
-        life.innerText = live
-      }
-
+      inputAction(arrayLeft)
       break;
     case 'ArrowUp':
-      arrayUp.forEach(function (note) {
-        if (note.top > 582 && note.top + note.height < 712) {
-          guitarra.removeChild(note.html)
-          arrayUp.shift()
-          point += 10
-          score.innerText = point
-        } else if (arrayUp[0] && note.top < 582 || arrayUp.length === 0) {
-          live--
-          life.innerText = live
-        }
-      }.bind(this))
+      inputAction(arrayUp)
       break;
     case 'ArrowDown':
-      arrayDown.forEach(function (note) {
-        if (note.top > 582 && note.top + note.height < 712) {
-          guitarra.removeChild(note.html)
-          arrayDown.shift()
-          point += 10
-          score.innerText = point
-        } else if (arrayDown[0] && note.top < 582 || arrayDown.length === 0) {
-          live--
-          life.innerText = live
-        }
-      }.bind(this))
+      inputAction(arrayDown)
       break;
     case 'ArrowRight':
-      arrayRight.forEach(function (note) {
-        if (note.top > 582 && note.top + note.height < 712) {
-          guitarra.removeChild(note.html)
-          arrayRight.shift()
-          point += 10
-          score.innerText = point
-        } else if (arrayRight[0] && note.top < 582 || arrayRight.length === 0) {
-          live--
-          life.innerText = live
-        }
-      }.bind(this))
+      inputAction(arrayRight)
       break;
   }
 }
 
-function startGame() {
+function startGame(songTimer) {
   timerGenerator = setInterval(generator, 2000)
   timerGame = setInterval(function () {
     moveNote()
     removeNote()
   }, 10)
+  timerWinner = setTimeout(function () {
+  alert("you win")
+    clearGame()
+  },songTimer)
+}
+
+function clearGame() {
+  arrayLeft.forEach(function (note) {
+    guitarra.removeChild(note.html)
+  }.bind(this))
+  arrayUp.forEach(function (note) {
+    guitarra.removeChild(note.html)
+  }.bind(this))
+  arrayDown.forEach(function (note) {
+    guitarra.removeChild(note.html)
+  }.bind(this))
+  arrayRight.forEach(function (note) {
+    guitarra.removeChild(note.html)
+  }.bind(this))
+  arrayLeft = []
+  arrayUp = []
+  arrayDown = []
+  arrayRight = []
+  life.innerText = 5
+  score.innerText = 0
+  live = parseInt(life.innerHTML)
+  clearInterval(timerGame)
+  clearInterval(timerGenerator)
+  clearTimeout(timerWinner)
 }
 
 const arrows = {
@@ -203,4 +230,3 @@ window.addEventListener("keydown", function (e) {
     arrows.activatedArrow(e.code);
   }
 })
-//startGame()
