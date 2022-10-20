@@ -9,7 +9,7 @@ function Nota(left) {
     this.top += this.incremento
     this.html.style.top = this.top + 'px'
   }
-}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
+}
 
 var arrayLeft = []
 var arrayUp = []
