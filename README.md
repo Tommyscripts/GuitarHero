@@ -1,9 +1,4 @@
 # ArrowHero
-Integrantes: Javier Cabrera Escoz, Emilio Casado de Galdo, Alejandro José Cruz Santiago
-
-
-
-
 
 ## Introducción 🚀
 Realizamos un juego basado en HTML, CSS y JavaScripts.
@@ -27,7 +22,15 @@ Notas = las notas generadas por el juego.
 
 Guitarra = la variable utilizada para crear el camino que recorrera las notas.
 
-variable timeup = Creamos un setInterval reutilizable.
+Life= es la variable utilizada para mostrar el contador de vidas durante la partida.
+
+function gameOver = Es la funcion que actuara una vez el contador de vidas llegue a 0 donde terminara el juego.
+
+Variable timeup = Creamos un setInterval reutilizable.
+
+variable timerWiner = la variable que se utiliza para cuando ganas el juego.
+
+function cleargame = para en la condicion de ganar o perder, limpie el juego.
 
 Creamos una constante llamada moveNote la cual utilizamos para una funcion, su objetivo es mover la nota a travéz de la string.
 
@@ -93,63 +96,129 @@ La generación de la primera nota.
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+A cada paso dado se realizan pruebas testeando el codigo las pruebas realizadas han sido las siguientes:
 
-### Analice las pruebas end-to-end 🔩
+El reconocimiento de eventlistener keydown, en sus relativos puesttos, izquierda, arriba,abajo  y derecha, dando el resultado deseado.
 
-_Explica que verifican estas pruebas y por qué_
+La creacion de una nota, tras crear el generador de notas, nos aseguramos que se genera una nota.
+
+La eliminación de la nota tras salir de la caja, tras el paso anterior nos aseguramos que la nota es eliminada.
+
+### Refactorización del codigo 🔩
+
+Tras unas pruebas, hemos refactorizado el codigo, antes de refacttorizar, se veia de esta manera: 
+```
+function activatedArrow() {
+    if (arrows.pressed === 'left') {
+        arrows.sprites[0].style.backgroundColor = "red"
+        setTimeout(function() {
+            arrows.sprites[0].style.backgroundColor = "transparent"
+        },200)
+    }else if(arrows.pressed === 'up'){
+        arrows.sprites[1].style.backgroundColor = "green"
+        setTimeout(function() {
+            arrows.sprites[1].style.backgroundColor = "transparent"
+        },200)
+    }else if(arrows.pressed === 'down'){
+        arrows.sprites[2].style.backgroundColor = "blue"
+        setTimeout(function() {
+            arrows.sprites[2].style.backgroundColor = "transparent"
+        },200)
+    }else if(arrows.pressed === 'right'){
+        arrows.sprites[3].style.backgroundColor = "yellow"
+        setTimeout(function() {
+            arrows.sprites[3].style.backgroundColor = "transparent"
+        },200)
+    }
+}
+
+var guitarra = document.getElementById('guitarra')
+var nota = document.createElement('div')
+nota.setAttribute('class','notaCSS')
+guitarra.appendChild(nota)
+console.log(nota)
+var notaTop = 10
+var direccion = 1
+
+const moveNote = function() {
+    if (notaTop == 728) {
+        guitarra.removeChild(nota)
+    }
+    notaTop += 1 * direccion
+    nota.style.top = notaTop+'px'
+} 
+```
+
+Tras refactorizar, el resultado es el siguiente: 
 
 ```
-Da un ejemplo
+const arrows = {
+  sprites: document.getElementsByClassName("botn"),
+  colorAndTransparent(id, color) {
+    this.sprites[id].style.backgroundColor = color
+    setTimeout(() => {
+      this.sprites[id].style.backgroundColor = "transparent"
+    }, 200)
+  },
+  activatedArrow(pressed) {
+    switch (pressed) {
+      case 'ArrowLeft':
+        this.colorAndTransparent(0, 'red');
+        break;
+      case 'ArrowUp':
+        this.colorAndTransparent(1, 'green');
+        break;
+      case 'ArrowDown':
+        this.colorAndTransparent(2, 'blue');
+        break;
+      case 'ArrowRight':
+        this.colorAndTransparent(3, 'yellow');
+        break;
+    }
+    if (Nota.top > 582 && Nota.top+Nota.height < 712) {
+      console.log('DENTRO PERO CUALQUIER TECLA')
+    }
+  }
+}
+
+window.addEventListener("keydown", function (e) {
+  if (['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'].includes(e.code)) {
+    arrows.activatedArrow(e.code);
+  }
+})
 ```
 
+Tras acabar con la programación mas básica y necesaria, nos hemos puesto a trabajar con el diseño
+```
+https://www.figma.com/file/iawhL8b86WSC5D4vTU7Pgb/Untitled?node-id=1%3A3
+```
 ### Y las pruebas de estilo de codificación ⌨️
 
-_Explica que verifican estas pruebas y por qué_
+Hemos hecho una variedad de pruebas cambiando fondos, estilos, pantalla de inicio, game over, etc.
 
-```
-Da un ejemplo
-```
+La razon del porque hemos cambiado diseños, es porque al verlo en el juego no nos ha gustado el resultado, hemos cambiado varias veces hasta estar totalmente agusto con el resultado.
+
+
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
+Tras la versión más optimizada se realizo el despliegue definitivo del juego.
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+Visual studios code
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+Terminal ubuntu
+
+* [Developers Mozilla]((https://developer.mozilla.org/es/)) - Hemos sacado la información necesaria de esta página.
 
 ## Contribuyendo 🖇️
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+Javier Cabrera Escoz, Emilio Casado de Galdo, Alejandro José Cruz Santiago
 
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ## Expresiones de Gratitud 🎁
 
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
+* Al buen café.
+* A los profes de reboot.
+* Y a MDN.
