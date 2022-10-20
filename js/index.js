@@ -48,7 +48,7 @@ start.addEventListener('click', function (e) {
 })
 
 function generator() {
-  var position = ['75px', '280px', '485px', '690px']
+  var position = ['75px', '280px', '485px', '700px']
   var ranPosition = Math.floor(Math.random() * 4)
   var newNota = new Nota(position[ranPosition])
   newNota.html.setAttribute('class', 'notaCSS');
