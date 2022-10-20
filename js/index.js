@@ -25,9 +25,15 @@ var point = 0
 var start = document.getElementById('start')
 var comboBox = document.getElementById('combo')
 var comboCounter = 0
+var music = new Audio("../song/acdc.webm")
+// music.volume = 0.3;
+// music.loop = true;
+// music.play();
+// music.currentTime
 
 start.addEventListener('click', function (e) {
   start.parentNode.parentNode.style.display= "none"
+  console.log(music.currentTime)
   startGame(40000)
 })
 

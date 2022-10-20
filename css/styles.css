@@ -70,6 +70,7 @@ body {
     width: 135px;
     height: 130px;
 }
+
 #left{
     background-image: url("../img/Left.png");
     background-repeat: no-repeat;
@@ -110,15 +111,6 @@ body {
     background-image: url("../img/note.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-}
-
-.pruebacss {
-    position: absolute;
-    top: 582px;
-    left: 610px;
-    height: 70px;
-    width: 70px;
-    background-color: grey;
 }
 
 #score {
@@ -174,6 +166,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 500px;
+    margin-left: 475px;
 }
 
 #level:hover{
@@ -188,12 +182,20 @@ body {
     background-size: 100% 100%;
 }
 
-.start{
+.menustart{
     position: absolute;
+    z-index: 1;
     height: 100%;
     width: 100%;
     background-image: url("../img/startgame.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: block;
+}
+
+#start{
+    border: none;
+    height: 100%;
+    width: 100%;
+    background: none;
 }
