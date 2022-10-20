@@ -29,16 +29,16 @@ var music = new Audio("../song/acdc.mp3")
 var backTittle = document.getElementsByClassName('tittle')
 var loser = document.getElementById('windowGameover')
 var winner = document.getElementById('windowGamewin')
-var maxPoint = document.getElementById('maxp')
-var maxCombo = document.getElementById('maxc')
+var maxPoint = document.getElementsByClassName('maxp')
+var maxCombo = document.getElementsByClassName('maxc')
 var maxC = 0
 var leveup = 0
 
 for (let i = 0; i < backTittle.length; i++) {
-    backTittle[i].addEventListener('click', function (e) {
-      start.parentNode.parentNode.style.display = "block"
-      backTittle[i].parentNode.parentNode.style.display = "none"
-    })
+  backTittle[i].addEventListener('click', function (e) {
+    start.parentNode.parentNode.style.display = "block"
+    backTittle[i].parentNode.parentNode.style.display = "none"
+  })
 }
 
 start.addEventListener('click', function (e) {
@@ -124,8 +124,11 @@ function inputAction(arr) {
         comboBox.innerText = comboCounter
         if (maxC < comboCounter) {
           maxC = comboCounter
-          maxCombo.innerText = maxC
+          for (let i = 0; i < maxCombo.length; i++) {
+            maxCombo[i].innerText = maxC
+          }
         }
+
       } else if (arr[0] && note.top < 582) {
         live--
         life.innerText = live
@@ -161,6 +164,11 @@ function checkNote(pressed) {
 }
 
 function startGame(songTimer) {
+  maxC = 0
+  for (let i = 0; i < maxCombo.length; i++) {
+    maxCombo[i].innerText = 0
+    maxPoint[i].innerText = 0
+  }
   music.volume = 0.1;
   music.play();
   timerGenerator = setInterval(generator, 2000)
@@ -171,11 +179,10 @@ function startGame(songTimer) {
   timerWinner = setTimeout(function () {
     clearGame()
     winner.style.display = "block"
-  }, songTimer * 1000)
+  }, 40000)
 }
 
 function clearGame() {
-
   arrayLeft.forEach(function (note) {
     guitarra.removeChild(note.html)
   }.bind(this))
@@ -195,13 +202,17 @@ function clearGame() {
   arrayRight = []
 
   life.innerText = 5
-  maxPoint.innerText = point
+  for (let i = 0; i < maxPoint.length; i++) {
+    maxPoint[i].innerText = point
+  }
+  point = 0
   score.innerText = 0
   live = parseInt(life.innerHTML)
   comboCounter = 0
   comboBox.innerText = comboCounter
 
   music.pause();
+  music.currentTime = 0
 
   clearInterval(timerGame)
   clearInterval(timerGenerator)

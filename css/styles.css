@@ -120,6 +120,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 150px 0px 0px 70px;
+    font-family: "NewRocker";
     font-size: 40px;
     font-weight: bold;
     background-image: url("../img/marco2.jpg");
@@ -132,10 +133,12 @@ body {
     width: 200px;
     height: 200px;
     display: flex;
+   
     justify-content: center;
     align-items: center;
     margin: 30% 20% 0% 20%;
-    font-size: 150px;
+    font-family: "NewRocker";
+    font-size: 180px;
     font-weight: bold;
     background-image: url("../img/marco2.jpg");
     background-repeat: no-repeat;
@@ -149,12 +152,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "DangerNight";
     margin: 85px 0px 0px 70px;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     background-image: url("../img/marco2.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}
+
+#combox > span{
+    font-family: "NewRocker";
+    font-size: 40px;
 }
 
 #level {
@@ -236,6 +245,12 @@ body {
     src: url("../font/DangerNight.ttf");
 }
 
+@font-face {
+    font-family: "NewRocker";
+    font-style: normal;
+    src: url("../font/NewRocker-Regular.ttf");
+}
+
 .maxpoint{
     background-image: url("../img/FondoContador5.png");
     background-repeat: no-repeat;
@@ -268,14 +283,14 @@ body {
 }
 
 .maxpoint>span{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "NewRocker";
     padding: 11px;
     font-size: 50px;
     color: rgb(255, 255, 255);
 }
 
 .maxcombo>span{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "NewRocker";
     padding: 11px;
     font-size: 50px;
     color: rgb(255, 255, 255);
