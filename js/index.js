@@ -179,7 +179,7 @@ function startGame(songTimer) {
   timerWinner = setTimeout(function () {
     clearGame()
     winner.style.display = "block"
-  }, 40000)
+  }, songTimer * 1000)
 }
 
 function clearGame() {
