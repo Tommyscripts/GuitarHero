@@ -25,16 +25,11 @@ var point = 0
 var start = document.getElementById('start')
 var comboBox = document.getElementById('combo')
 var comboCounter = 0
-var music = new Audio("../song/acdc.webm")
-// music.volume = 0.3;
-// music.loop = true;
-// music.play();
-// music.currentTime
+var music = new Audio("../song/acdc.mp3")
 
 start.addEventListener('click', function (e) {
   start.parentNode.parentNode.style.display= "none"
-  console.log(music.currentTime)
-  startGame(40000)
+  startGame(music.duration)
 })
 
 function generator() {
@@ -97,8 +92,8 @@ function checkRemoveNote() {
 
 function gameOver() {
   if (live === -1) {
-    alert("Game Over")
     clearGame()
+    alert("Game Over")
   }
 }
 
@@ -147,15 +142,17 @@ function checkNote(pressed) {
 }
 
 function startGame(songTimer) {
+  music.volume = 0.1;
+  music.play();
   timerGenerator = setInterval(generator, 2000)
   timerGame = setInterval(function () {
     moveNote()
     checkRemoveNote()
   }, 10)
   timerWinner = setTimeout(function () {
-    alert("you win")
     clearGame()
-  }, songTimer)
+    alert("you win")
+  }, songTimer*1000)
 }
 
 function clearGame() {
@@ -183,6 +180,8 @@ function clearGame() {
   live = parseInt(life.innerHTML)
   comboCounter = 0
   comboBox.innerText = comboCounter
+  
+  music.pause();
 
   clearInterval(timerGame)
   clearInterval(timerGenerator)

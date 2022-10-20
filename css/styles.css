@@ -187,7 +187,7 @@ body {
     z-index: 1;
     height: 100%;
     width: 100%;
-    background-image: url("../img/startgame.jpg");
+    background-image: url("../img/startScreen.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: block;
@@ -198,4 +198,104 @@ body {
     height: 100%;
     width: 100%;
     background: none;
+}
+
+.tittle{
+    border: none;
+    height: 100%;
+    width: 100%;
+    background: none;
+}
+
+.windowGameover{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-image: url("../img/GameOverScreenFinalv2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: none;
+}
+
+.windowGamewin{
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-image: url("../img/WinScreenv2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: none;
+}
+
+@font-face {
+    font-family: "DangerNight";
+    font-style: normal;
+    src: url("../font/DangerNight.otf");
+    src: url("../font/DangerNight.ttf");
+}
+
+.maxpoint{
+    background-image: url("../img/FondoContador5.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 400px;
+    height: 80px;
+    color: rgb(182, 21, 21);
+    font-family: "DangerNight";
+    font-size: 70px;
+    font-weight: bold;
+    display: flex;
+    margin-top: 280px;
+    margin-left: 510px;
+}
+
+.maxcombo{
+    background-image: url("../img/FondoContador5.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 400px;
+    height: 80px;
+    color: rgb(182, 21, 21);
+    font-family: "DangerNight";
+    font-size: 70px;
+    font-weight: bold;
+    display: flex;
+    justify-content:flex-start;
+    margin-top: 20px;
+    margin-left: 510px;
+}
+
+.maxpoint>span{
+    color: rgb(255, 255, 255);
+}
+
+.maxcombo>span{
+    color: rgb(255, 255, 255);
+}
+
+#level2 {
+    width: 200px;
+    height: 100px;
+    background-image: url('../img/marco3.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 475px;
+}
+
+#level2:hover{
+    background-image: url('../img/marco2-hover.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#level2:active{
+    background-image: url('../img/marco2-active.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
