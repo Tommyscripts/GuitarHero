@@ -9,7 +9,7 @@ function Nota(left) {
     this.top += this.incremento
     this.html.style.top = this.top + 'px'
   }
-}
+}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
 
 var arrayLeft = []
 var arrayUp = []
@@ -25,7 +25,7 @@ var point = 0
 var start = document.getElementById('start')
 var comboBox = document.getElementById('combo')
 var comboCounter = 0
-var music = new Audio("../song/acdc.mp3")
+var music = new Audio("song/acdc.mp3")
 var backTittle = document.getElementsByClassName('tittle')
 var loser = document.getElementById('windowGameover')
 var winner = document.getElementById('windowGamewin')
