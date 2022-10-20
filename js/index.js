@@ -26,9 +26,24 @@ var start = document.getElementById('start')
 var comboBox = document.getElementById('combo')
 var comboCounter = 0
 var music = new Audio("../song/acdc.mp3")
+var backTittle = document.getElementsByClassName('tittle')
+var loser = document.getElementById('windowGameover')
+var winner = document.getElementById('windowGamewin')
+var maxPoint = document.getElementById('maxp')
+var maxCombo = document.getElementById('maxc')
+var maxC = 0
+var leveup = 0
+
+for (let i = 0; i < backTittle.length; i++) {
+    backTittle[i].addEventListener('click', function (e) {
+      start.parentNode.parentNode.style.display = "block"
+      backTittle[i].parentNode.parentNode.style.display = "none"
+    })
+}
 
 start.addEventListener('click', function (e) {
-  start.parentNode.parentNode.style.display= "none"
+  start.parentNode.parentNode.style.display = "none"
+  console.log(start.parentNode.parentNode)
   startGame(music.duration)
 })
 
@@ -82,18 +97,18 @@ function removeNote(arr) {
 }
 
 function checkRemoveNote() {
-  
+
   removeNote(arrayLeft)
   removeNote(arrayUp)
   removeNote(arrayDown)
   removeNote(arrayRight)
-  
+
 }
 
 function gameOver() {
   if (live === -1) {
     clearGame()
-    alert("Game Over")
+    loser.style.display = "block"
   }
 }
 
@@ -107,6 +122,10 @@ function inputAction(arr) {
         score.innerText = point
         comboCounter++
         comboBox.innerText = comboCounter
+        if (maxC < comboCounter) {
+          maxC = comboCounter
+          maxCombo.innerText = maxC
+        }
       } else if (arr[0] && note.top < 582) {
         live--
         life.innerText = live
@@ -151,12 +170,12 @@ function startGame(songTimer) {
   }, 10)
   timerWinner = setTimeout(function () {
     clearGame()
-    alert("you win")
-  }, songTimer*1000)
+    winner.style.display = "block"
+  }, songTimer * 1000)
 }
 
 function clearGame() {
-  
+
   arrayLeft.forEach(function (note) {
     guitarra.removeChild(note.html)
   }.bind(this))
@@ -169,18 +188,19 @@ function clearGame() {
   arrayRight.forEach(function (note) {
     guitarra.removeChild(note.html)
   }.bind(this))
-  
+
   arrayLeft = []
   arrayUp = []
   arrayDown = []
   arrayRight = []
 
   life.innerText = 5
+  maxPoint.innerText = point
   score.innerText = 0
   live = parseInt(life.innerHTML)
   comboCounter = 0
   comboBox.innerText = comboCounter
-  
+
   music.pause();
 
   clearInterval(timerGame)
