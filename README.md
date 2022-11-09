@@ -42,7 +42,7 @@ Addevenlistener (keydown) con un switch, donde detectanos el evento de la pulsac
 
 
 
-```
+```js
 window.addEventListener("keydown", function (e) {
     switch (e.code) {
         case 'ArrowLeft':
