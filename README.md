@@ -66,7 +66,7 @@ window.addEventListener("keydown", function (e) {
 ```
 El activated arrow
 
-```
+```js
 function activatedArrow() {
     if (arrows.pressed === 'left') {
         arrows.sprites[0].style.backgroundColor = "red"
@@ -107,7 +107,7 @@ La eliminación de la nota tras salir de la caja, tras el paso anterior nos aseg
 ### Refactorización del codigo 🔩
 
 Tras unas pruebas, hemos refactorizado el codigo, antes de refacttorizar, se veia de esta manera: 
-```
+```js
 function activatedArrow() {
     if (arrows.pressed === 'left') {
         arrows.sprites[0].style.backgroundColor = "red"
@@ -151,7 +151,7 @@ const moveNote = function() {
 
 Tras refactorizar, el resultado es el siguiente: 
 
-```
+```js
 const arrows = {
   sprites: document.getElementsByClassName("botn"),
   colorAndTransparent(id, color) {
